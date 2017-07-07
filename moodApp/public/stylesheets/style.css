@@ -6,3 +6,10 @@ body {
 a {
   color: #00B7FF;
 }
+
+#mainContainer{
+  background-image: url('../images/RectangleBackground.svg');
+  height: 1024px;
+  width: 768px;
+  margin: auto;
+}
