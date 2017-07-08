@@ -12,4 +12,145 @@ a {
   height: 1024px;
   width: 768px;
   margin: auto;
+  position: relative;
+}
+
+#logo{
+  position: absolute;
+  width: 398px;
+  left: 22.97px;
+  top: 15.09px;
+}
+
+#logoIcons{
+  position: absolute;
+  width: 460.8px;
+  height: 115.59px;
+  left: 134.33px;
+  top: 238px;
+}
+
+.purpleText{
+  color: #A700FF;
+  text-shadow: white -1px -1px;
+}
+
+#loginText{
+  position: absolute;
+  font-size: 47px;
+  font-family: Andale Mono;
+  top: 395px;
+  left:22.86px;
+}
+
+.pinkText{
+  color: #FF00EB;
+  text-shadow: white -1px -1px;
+}
+
+#userNameLabel{
+  font-size: 47px;
+  position: absolute;
+  top: 459px;
+  left: 270.86px;
+}
+
+.loginInput{
+  width: 431.48px;
+  height: 75.76px;
+  position: absolute;
+  left: 193.35px;
+  top: 553.81px;
+  border: 7px solid #40B2FF;
+  border-radius: 10px;
+  text-align: center;
+  color: grey;
+  font-size: 37px;
+}
+
+#passwordNameLabel{
+  position: absolute;
+  font-size: 47px;
+  top: 661px;
+  left: 270.86px;
+}
+
+#passwordNameInput{
+  position: absolute;
+  top: 727.81px;
+  left: 193.35px;
+}
+
+.pinkSubmitButton{
+  position: absolute;
+  width: 220.61px;
+  height: 77.83px;
+  left: 462.22px;
+  top: 901.51px;
+  border: 7px solid #40B2FF;
+  background-color: #FF00EB;
+  color: white;
+  font-size: 29px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+#emojiCredit{
+  position: absolute;
+  top: 1000px;
+  left: 533px;
+  width: 222px;
+  height: 14px;
+}
+
+#tellMeButton{
+  position: absolute;
+  width: 343.78px;
+  height: 93.89px;
+  top: 464.91px;
+  left: 103.22px;
+  background-color: #FF00EB;
+  color: white;
+  border: 7px solid #40B2FF;
+  font-size: 25px;
+  border-radius: 10px;
+}
+
+#userHistoryButton{
+  position: absolute;
+  width: 413.78px;
+  height: 93.89px;
+  left: 326.22px;
+  top: 640.91px;
+  background-color: #A700FF;
+  border: 7px solid #40B2FF;
+  color: white;
+  font-size: 25px;
+  border-radius: 10px;
+}
+
+#tmLabel{
+  position: absolute;
+  width: 594px;
+  height: 62px;
+  left: 86.5px;
+  top: 450.5px;
+  font-size: 55px;
+}
+
+#happyEmoji{
+  position: absolute;
+  left: 184.91px;
+  top: 534.68px;
+}
+
+#sadEmoji{
+  position: absolute;
+  left: 401.82px;
+  top: 534.68px;
+}
+
+.userEntryEmoji{
+  height: 116.68px;
+  width: 98.36px;
 }

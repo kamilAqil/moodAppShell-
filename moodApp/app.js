@@ -7,7 +7,14 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
-var users = require('./routes/users');
+var login = require('./routes/login');
+var userDash = require('./routes/userDash');
+var userMoodHistory = require('./routes/userMoodHistory');
+var userHistoryInDepth = require('./routes/userHistoryInDepth');
+var userEnterMood = require('./routes/userEnterMood.js');
+var adminDash = require('./routes/adminDash.js');
+var adminDashInDepth = require('./routes/adminDash.js');
+
 
 var app = express();
 
@@ -24,7 +31,14 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/users', users);
+app.use('/login', login);
+app.use('/userDash', userDash);
+app.use('/userHistory', userMoodHistory);
+app.use('/userHistoryInDepth', userHistoryInDepth);
+app.use('/userEnterMood', userEnterMood);
+app.use('/adminMoodHistory', adminDash);
+app.use('/adminInDepthMood', adminDashInDepth);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
