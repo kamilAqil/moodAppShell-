@@ -1,6 +1,7 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px;
+  font-family: 'Slabo 27px', serif;
 }
 
 a {
@@ -13,6 +14,7 @@ a {
   width: 768px;
   margin: auto;
   position: relative;
+  font-family: 'Slabo 27px', serif;
 }
 
 #logo{
@@ -20,6 +22,7 @@ a {
   width: 398px;
   left: 22.97px;
   top: 15.09px;
+  font-family: 'Slabo 27px', serif;
 }
 
 #logoIcons{
@@ -28,17 +31,19 @@ a {
   height: 115.59px;
   left: 134.33px;
   top: 238px;
+  font-family: 'Slabo 27px', serif;
 }
 
 .purpleText{
   color: #A700FF;
   text-shadow: white -1px -1px;
+  font-family: 'Slabo 27px', serif;
 }
 
 #loginText{
   position: absolute;
   font-size: 47px;
-  font-family: Andale Mono;
+  font-family: 'Slabo 27px', serif;
   top: 395px;
   left:22.86px;
 }
@@ -46,6 +51,7 @@ a {
 .pinkText{
   color: #FF00EB;
   text-shadow: white -1px -1px;
+  font-family: 'Slabo 27px', serif;
 }
 
 #userNameLabel{
@@ -53,6 +59,7 @@ a {
   position: absolute;
   top: 459px;
   left: 270.86px;
+  font-family: 'Slabo 27px', serif;
 }
 
 .loginInput{
@@ -66,6 +73,7 @@ a {
   text-align: center;
   color: grey;
   font-size: 37px;
+  font-family: 'Slabo 27px', serif;
 }
 
 #passwordNameLabel{
@@ -73,12 +81,14 @@ a {
   font-size: 47px;
   top: 661px;
   left: 270.86px;
+  font-family: 'Slabo 27px', serif;
 }
 
 #passwordNameInput{
   position: absolute;
   top: 727.81px;
   left: 193.35px;
+  font-family: 'Slabo 27px', serif;
 }
 
 .pinkSubmitButton{
@@ -93,6 +103,7 @@ a {
   font-size: 29px;
   text-align: center;
   border-radius: 10px;
+  font-family: 'Slabo 27px', serif;
 }
 
 #emojiCredit{
@@ -101,6 +112,7 @@ a {
   left: 533px;
   width: 222px;
   height: 14px;
+  font-family: 'Slabo 27px', serif;
 }
 
 #tellMeButton{
@@ -114,6 +126,7 @@ a {
   border: 7px solid #40B2FF;
   font-size: 25px;
   border-radius: 10px;
+  font-family: 'Slabo 27px', serif;
 }
 
 #userHistoryButton{
@@ -127,6 +140,7 @@ a {
   color: white;
   font-size: 25px;
   border-radius: 10px;
+  font-family: 'Slabo 27px', serif;
 }
 
 #tmLabel{
@@ -136,23 +150,27 @@ a {
   left: 86.5px;
   top: 450.5px;
   font-size: 55px;
+  font-family: 'Slabo 27px', serif;
 }
 
 #happyEmoji{
   position: absolute;
   left: 184.91px;
   top: 534.68px;
+  font-family: 'Slabo 27px', serif;
 }
 
 #sadEmoji{
   position: absolute;
   left: 401.82px;
   top: 534.68px;
+  font-family: 'Slabo 27px', serif;
 }
 
 .userEntryEmoji{
   height: 116.68px;
   width: 98.36px;
+  font-family: 'Slabo 27px', serif;
 }
 
 #happyLabel{
@@ -162,6 +180,7 @@ a {
   left: 212.88px;
   top: 673.55px;
   font-size: 14px;
+  font-family: 'Slabo 27px', serif;
 }
 
 #sadLabel{
@@ -171,6 +190,7 @@ a {
   left: 406.11px;
   top: 673.55px;
   font-size: 14px;
+  font-family: 'Slabo 27px', serif;
 }
 
 #clickOneInstructions{
@@ -181,6 +201,7 @@ a {
   top: 587.96px;
   color: #95989A;
   font-size: 19px;
+  font-family: 'Slabo 27px', serif;
 }
 
 #userMoodInput{
@@ -194,11 +215,13 @@ a {
   text-align: center;
   font-size: 20px;
   word-wrap: break-word;
+  font-family: 'Slabo 27px', serif;
 }
 
 .blueBorder{
   border: 7px solid #40B2FF;
   border-radius: 10px;
+  font-family: 'Slabo 27px', serif;
 }
 
 .backButton{
@@ -211,6 +234,7 @@ a {
   color: white;
   text-align: center;
   font-size: 18px;
+  font-family: 'Slabo 27px', serif;
 }
 
 #submitFeelings{
@@ -223,6 +247,7 @@ a {
   color: white;
   font-size: 18px;
   text-align: center;
+  font-family: 'Slabo 27px', serif;
 }
 
 #inDepthEntryLabel{
@@ -232,6 +257,7 @@ a {
   position: absolute;
   left: 133.86px;
   top: 397px;
+  font-family: 'Slabo 27px', serif;
 }
 
 #userHistoryMoodInput{
@@ -242,6 +268,7 @@ a {
   left: 134.35px;
   font-size: 20px;
   color: #95989A;
+  font-family: 'Slabo 27px', serif;
 }
 
 .emojiForUserInDepthReview{
@@ -250,6 +277,7 @@ a {
   position: absolute;
   left: 467.91px;
   top: 756.68px;
+  font-family: 'Slabo 27px', serif;
 }
 
 #emojiMoodLabel{
@@ -259,6 +287,7 @@ a {
   left: 470.5px;
   top: 699.5px;
   font-size: 39px;
+  font-family: 'Slabo 27px', serif;
 }
 
 #containerForPostHistory{
@@ -269,6 +298,7 @@ a {
   top: 412.31px;
   background-color: white;
   overflow: auto;
+  font-family: 'Slabo 27px', serif;
 }
 
 .userPostRow{
@@ -278,6 +308,7 @@ a {
   border-radius: 10px;
   margin-bottom: 17px;
   text-align: center;
+  font-family: 'Slabo 27px', serif;
 }
 
 .rowPostDateLabel{
@@ -288,6 +319,7 @@ a {
   top: 19px;
   left: 90px;
   position: absolute;
+  font-family: 'Slabo 27px', serif;
 }
 
 .historyRowEmoji{
@@ -296,6 +328,7 @@ a {
   position: absolute;
   top: 11px;
   right: 75px;
+  font-family: 'Slabo 27px', serif;
 
 }
 
@@ -305,6 +338,7 @@ a {
   position: absolute;
   left: 218px;
   top: 695px;
+  font-family: 'Slabo 27px', serif;
 }
 
 #containerForAdminHistory{
@@ -314,4 +348,5 @@ a {
   left: 150px;
   top: 410px;
   overflow: auto;
+  font-family: 'Slabo 27px', serif;
 }
