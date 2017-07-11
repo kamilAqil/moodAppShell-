@@ -1,11 +1,18 @@
-<img src='images/mainLogo.svg' id='logo' alt=''>
-<img src='images/emojiGroupIcons.svg' id='logoIcons' alt=''>
-<span class='purpleText' id='loginText'>Log In</span>
-<form action='/handleLogIn' method='post'>
-    <span class='pinkText' id='userNameLabel'>Username</span>
-    <input type="text" class="loginInput" id="userNameInput">
-    <span class='pinkText' id='passwordNameLabel'>Password</span>
-    <input type="password" class="loginInput" id="passwordNameInput">
-    <button type="submit" class="pinkSubmitButton">Submit</button>
-</form>
-<img src="images/emojiCredit.svg" id="emojiCredit" alt="">
+{{> header}}
+<h1>LOGIN</h1>
+
+<form method="POST" action="/login">
+
+        <div class="form-group">
+        <label for="username">User name</label>
+        <input type="text" class="form-control" name="username" aria-describedby="emailHelp" placeholder="username">
+        </div>
+
+        <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" name="password" placeholder="Enter Password">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+
+    </form>
