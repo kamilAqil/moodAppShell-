@@ -33,7 +33,7 @@
     "webpack-dotenv-plugin": "^2.0.0",
     "express-session": "*",
     "express-validator": "*",
-    "passport":"*",
-    "bcrypt":"*"
+    "passport": "*",
+    "bcrypt": "*"
   }
 }
