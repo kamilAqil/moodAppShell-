@@ -49,3 +49,4 @@
     "webpack": "^2.2.0",
     "webpack-dotenv-plugin": "^2.0.0"
   }
+}
