@@ -17,7 +17,7 @@ var Sequelize = require("sequelize");
 // });
 
 // // Creates mySQL connection using Sequelize
-var sequelize = new Sequelize("heroku_78e36a8269130c6", "b212ed4c15206e", "0168844f", {
+var sequelize = new Sequelize("heroku_a9c3b7ff3b5f692", "babbe505ecfb1b", "84f122c8", {
   host: "us-cdbr-iron-east-03.cleardb.net",
   dialect: "mysql",
   pool: {
