@@ -5,7 +5,6 @@ var Sequelize = require('sequelize');
 var env = process.env.NODE_ENV || 'development';
 var config = require(path.join(__dirname,'config','config.json'))[env];
 var sequelize = new Sequelize(config.database, config.username, config.password, config);
-var db = {};
 var favicon = require('serve-favicon');
 // auth++++++
 var passport = require('passport');
@@ -19,21 +18,19 @@ var MySQLStore = require('express-mysql-session')(session);
 var bcrypt = require('bcrypt');
 var index = require('./routes/index');
 var users = require('./routes/users');
+var models = require('./models');
 // var profile = require('./routes/profile')
 var app = express();
-
-
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 app.use(express.static(path.join(__dirname, 'public')));
+// uncomment after placing your favicon in /public
+//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
 // Handlebars default config
 const hbs = require('hbs');
-
 const partialsDir = __dirname + '/views/partials';
-
 const filenames = fs.readdirSync(partialsDir);
 
 filenames.forEach(function (filename) {
@@ -50,18 +47,20 @@ hbs.registerHelper('json', function(context) {
     return JSON.stringify(context, null, 2);
 });
 
-
-
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-
-
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(expressValidator());
 app.use(cookieParser());
-
+// For Passport
+app.use(session({ secret: 'keyboard cat',resave: true, saveUninitialized:true})); // session secret
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
+models.sequelize.sync().then(function(){
+  console.log('looks fine');
+}).catch(function(err){
+  consol.log(err);
+});
 // comment out this passport code for now
 // app.use(session({
 //   // move the secret key to env file
