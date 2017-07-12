@@ -7,7 +7,6 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
-
     "body-parser": "~1.15.2",
     "cookie-parser": "~1.4.3",
     "debug": "~2.2.0",
@@ -18,7 +17,7 @@
     "mysql": "^2.13.0",
     "passport-local": "^1.0.0",
     "serve-favicon": "~2.3.0",
-    "watson-developer-cloud/tone-analyzer/v3":"*",
+    "watson-developer-cloud/tone-analyzer/v3": "*",
     "babel-core": "^6.24.1",
     "babel-loader": "^7.0.0",
     "babel-preset-env": "^1.4.0",
@@ -49,3 +48,4 @@
     "webpack": "^2.2.0",
     "webpack-dotenv-plugin": "^2.0.0"
   }
+}
