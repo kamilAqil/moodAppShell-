@@ -1,21 +1,37 @@
-<img src='images/mainLogo.svg' id='logo' alt=''>
-<img src='images/emojiGroupIcons.svg' id='logoIcons' alt=''>
-<div id="containerForAdminHistory" class="blueBorder container">
-    <div class="row userPostRow">
-        <span class="rowPostDateLabel">4/20/16</span>
-        <img src="./images/happyEmoji.svg" class="historyRowEmoji" alt="">
+<div class="container">
+        <div class="row">
+            <div class="col-sm-8">
+                <h3>Select a User</h3>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-sm-8">
+            <select class="form-control">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+            </select>
+            </div>
+        </div>
+        <br>
+        <hr>
+        <div class="row">
+            <div class="col-sm-8">
+                <h3>Here is this user's post history:</h3>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-sm-2"> <img class="placeholderImage" src="placeholder.png" /></div>
+            <div class="col-sm-10" id="postHistory">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        Basic panel example
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="row userPostRow">
-        <span class="rowPostDateLabel">4/21/16</span>
-        <img src="./images/sadEmoji.svg" class="historyRowEmoji" alt="">
-    </div>
-    <div class="row userPostRow">
-        <span class="rowPostDateLabel">4/23/16</span>
-        <img src="./images/happyEmoji.svg" class="historyRowEmoji" alt="">
-    </div>
-</div>
-
-{{!--back button--}}
-<button type="button" class="backButton ">Back</button>
-{{!--emoji credit--}}
-<img src="images/emojiCredit.svg" id="emojiCredit" alt="">

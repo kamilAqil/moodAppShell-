@@ -153,19 +153,15 @@ a {
   font-family: 'Slabo 27px', serif;
 }
 
-#happyEmoji{
-  position: absolute;
-  left: 184.91px;
-  top: 534.68px;
-  font-family: 'Slabo 27px', serif;
-}
+    #happyEmoji {
+            height: 20px;
+            margin-top: 12.5px;
+    }
 
-#sadEmoji{
-  position: absolute;
-  left: 401.82px;
-  top: 534.68px;
-  font-family: 'Slabo 27px', serif;
-}
+    #sadEmoji {
+            height: 20px;
+            margin-top: 12.5px;
+    }    
 
 .userEntryEmoji{
   height: 116.68px;
@@ -350,3 +346,53 @@ a {
   overflow: auto;
   font-family: 'Slabo 27px', serif;
 }
+
+ h1 {
+        font-family: 'Francois One', sans-serif;
+        letter-spacing: 2.5px;
+        color: #0073e5;
+        font-size: 68px;
+    }
+
+.emojiGroup {
+            height: 20px;
+            margin-top: 12.5px;
+    }
+
+  .navbar{
+        background-color: #0073e5; 
+        font-family: 'Francois One', sans-serif;
+    }
+    #edit, #delete {
+        background-color: rgba(255, 0, 101, 0.75);
+        color: white;
+    }   
+
+           #blogPost {
+            background-color: rgba(167, 0, 255, 0.75);
+            color: white;
+            position: relative;
+            left: 200px;
+            border-radius: 2.5px;
+        }
+
+        #summaryButton {
+            background-color: #FF00EB;
+            color: white;
+            position: relative;
+            left: 200px;
+        }
+
+
+        h3 {
+            font-weight: bold;
+        }
+
+         #submit {
+        background-color: rgba(255, 0, 101, 0.75);
+        color: white;
+    }
+        form, #registerUser {
+            position: relative;
+            left: 200px;
+        }
