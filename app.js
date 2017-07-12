@@ -1,15 +1,14 @@
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
+// auth++++++
+var passport = require('passport');
+var session = require('express-session');
+var LocalStrategy = require('passport-local').Strategy;
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var expressValidator = require('express-validator');
-
-// auth++++++
-var session = require('express-session');
-var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
 var MySQLStore = require('express-mysql-session')(session);
 var bcrypt = require('bcrypt');
 
@@ -24,20 +23,23 @@ require('dotenv').config();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
-
+app.use(express.static(path.join(__dirname, 'public')));
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+
+
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(expressValidator());
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+
+// we need to export this out 
 var options = {
   host: "us-cdbr-iron-east-03.cleardb.net",
-  user: "b212ed4c15206e",
-  password: "0168844f",
-  database : "heroku_78e36a8269130c6"
+  user: "babbe505ecfb1b",
+  password: "84f122c8",
+  database : "heroku_a9c3b7ff3b5f692"
 };
 var sessionStore = new MySQLStore(options);
 app.use(session({
@@ -54,6 +56,8 @@ app.use(function(req, res, next){
   res.locals.isAuthenticated = req.isAuthenticated();
   next();
 });
+
+
 
 app.use('/', index);
 app.use('/users', users);
