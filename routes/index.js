@@ -34,6 +34,10 @@ router.get('/register', function(req, res, next) {
   res.render('register', { title: 'Registeration' });
 });
 
+router.get('/entry',function(req,res,next){
+	res.render('journalEntry'),{title : ' journal'};
+});
+
 
 router.post('/register', function(req, res, next) {
 	req.checkBody('username', 'you must enter a username').notEmpty();
