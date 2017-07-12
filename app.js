@@ -34,10 +34,10 @@ app.use(expressValidator());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 var options = {
-  host: "localhost",
-  user: "root",
-  password: "Qwerty1368",
-  database : "login"
+  host: "us-cdbr-iron-east-03.cleardb.net",
+  user: "b212ed4c15206e",
+  password: "0168844f",
+  database : "heroku_78e36a8269130c6"
 };
 var sessionStore = new MySQLStore(options);
 app.use(session({
@@ -70,27 +70,31 @@ passport.use(new LocalStrategy(
     //   }
     console.log(username);
     console.log(password);
-    const db= require('./db');
+    
+    // const db= require('./db');
+    const db = require('/models/users.js');
 
-    db.query('SELECT id, password FROM users WHERE username = ?', [username], function(err, results, fields){
-        if (err) {done(err)};
+    // need to 
 
-        if (results.length === 0){
-          done(null, false);
-        }else{
+    // db.query('SELECT id, password FROM users WHERE username = ?', [username], function(err, results, fields){
+    //     if (err) {done(err)};
 
-          const hash =results[0].password.toString();
-          bcrypt.compare(password, hash, function(err, response){
-            if(response) {
-                return done(null, {user_id:results[0].id});
-            }else{
-              return done(null, false);
-            }
-          })
-        };
+    //     if (results.length === 0){
+    //       done(null, false);
+    //     }else{
+
+    //       const hash =results[0].password.toString();
+    //       bcrypt.compare(password, hash, function(err, response){
+    //         if(response) {
+    //             return done(null, {user_id:results[0].id});
+    //         }else{
+    //           return done(null, false);
+    //         }
+    //       })
+    //     };
 
         
-    })
+    // });
       
   }
 ));

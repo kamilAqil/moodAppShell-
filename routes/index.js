@@ -61,21 +61,23 @@ router.post('/register', function(req, res, next) {
 	    const email = req.body.email;
 	    const password = req.body.password;
 
-	    const db = require('../db.js');
+		// const db = require('../db.js');
+		const db = require('../models/users.js');	
 	    bcrypt.hash(password, saltRounds, function(err, hash) {
-		    db.query('INSERT INTO users (username, email, password) VALUES (?, ?, ?)', [username, email, hash], function(error, results, fields) {
-		    	if (error) throw error;
+			
+		    // db.query('INSERT INTO users (username, email, password) VALUES (?, ?, ?)', [username, email, hash], function(error, results, fields) {
+		    // 	if (error) throw error;
 
-                db.query('SELECT LAST_INSERT_ID() as user_id', function(error, results, fields) {
-	                if (error) throw error;
+            //     db.query('SELECT LAST_INSERT_ID() as user_id', function(error, results, fields) {
+	        //         if (error) throw error;
 
-	                const user_id = results[0];
-	                console.log(user_id);
-	                req.login(user_id, function(err) {
-	                    res.redirect('/');
-	                });
-            	});
-			});
+	        //         const user_id = results[0];
+	        //         console.log(user_id);
+	        //         req.login(user_id, function(err) {
+	        //             res.redirect('/');
+	        //         });
+            // 	});
+			// });
 		});
     }
 });
