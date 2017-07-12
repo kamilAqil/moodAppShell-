@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Amaranth|Francois+One" rel="stylesheet">
+    <style>
+        h1 {
+            font-family: 'Francois One', sans-serif;
+            letter-spacing: 2.5px;
+            color: #0073e5;
+            font-size: 68px;
+        }
+
+        .emojiGroup {
+            width: 40%;
+            height: 40%
+        }
+
+        form, #registerUser {
+            position: relative;
+            left: 200px;
+        }
+
+        #submit {
+            background-color: rgba(255,0,101, 0.75);
+            color: white; 
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <h1 id="appName">MOOD TRACKER 3000</h1>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <img class="emojiGroup" src="emojiGroupIcons.svg">
+            </div>
+        </div>
+        <br>
+        <form>
+            <div class="row">
+                <div class="col-sm-8 form-group">
+                    <label for="exampleInputEmail1">Login</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                </div>
+                <div class="col-sm-8 form-group">
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                </div>
+            </div>
+
+            <div class="row">
+                     <div class="col-sm-8">
+                        <button type="submit" class="btn btn-default btn-block" id="submit">Submit</button>
+                     </div>
+                
+            </div>
+
+        </form>
+        <br>
+        <div class="row">
+            <div class="col-sm-12">
+                <p id="registerUser">Not a member? Click here to register.</p>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Amaranth|Francois+One" rel="stylesheet">
+    <style>
+    h1 {
+        font-family: 'Francois One', sans-serif;
+        letter-spacing: 2.5px;
+        color: #0073e5;
+        font-size: 68px;
+    }
+    
+    .emojiGroup {
+            height: 20px;
+            margin-top: 12.5px;
+    }
+
+    #happyEmoji {
+            height: 20px;
+            margin-top: 12.5px;
+    }
+
+    #sadEmoji {
+            height: 20px;
+            margin-top: 12.5px;
+    }    
+
+    .navbar{
+        background-color: #0073e5; 
+        font-family: 'Francois One', sans-serif;
+    }
+    
+    #edit, #delete {
+        background-color: rgba(255, 0, 101, 0.75);
+        color: white;
+    }
+
+
+
+    </style>
+</head>
+
+<body>
+<nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+
+
+            <div class="navbar-header">
+                <ul><a class="navbar-brand" href="#" style="color:white">Mood Tracker 3000 </a></ul>
+            </div>
+            <img class="emojiGroup" src="emojiGroupIcons.svg" />
+
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#" style="color:white">Dashboard</a></li>
+                <li><a href="#" style="color:white">History</a></li>
+                <li><a href="#" style="color:white">Logout</a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <h1 id="appName">Your Journal</h1>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-sm-4 text-left">
+                <h4 id="date">Monday July 10, 2017</h3>
+            </div>
+            <div class="col-sm-8 text-right">
+                <h4 id="word-count">Word Count: 52</h3>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-sm-6 text-left">
+                <span id="entry-title">Your Mood:</span>
+                <input type="image" id="happyEmoji" src="happyEmoji.svg" />
+            </div>
+        </div>
+        <br>
+        <form>
+            <div class="row">    
+                <div class="col-sm-12">
+                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non finibus risus. Nulla faucibus in tellus at maximus. Sed pharetra, erat nec facilisis lobortis, est ipsum gravida ex, vel pellentesque ipsum ligula vitae dui. Nullam sed lectus arcu. Curabitur ut semper sapien, vel malesuada libero. Praesent porttitor lacus maximus velit posuere congue. Aliquam erat volutpat. Ut dapibus enim sit amet libero dignissim, ultricies rutrum risus dictum. Maecenas ligula nibh, faucibus quis sem sit amet, fringilla volutpat orci. Fusce in nunc eget mi vulputate tincidunt. Integer placerat, ex id iaculis imperdiet, odio ligula rhoncus lectus, vel accumsan arcu sapien ut mi. Suspendisse potenti. Suspendisse vel nisl ut purus rutrum tincidunt id in nisl. Fusce sit amet dolor id justo tempor posuere sed eu ante.</p>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-sm-2">
+                    <button type="submit" class="btn btn-default btn-block" id="edit">Edit</button>
+                </div>
+                 <div class="col-sm-2">
+                    <button type="submit" class="btn btn-default btn-block" id="delete">Delete</button>
+                </div>
+            </div>
+        </form>    
+    </div>
+    <br><br>
+</body>
+
+</html>
