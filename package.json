@@ -15,12 +15,8 @@
     "hbs": "~4.0.1",
     "morgan": "~1.7.0",
     "mysql": "^2.13.0",
-
     "passport-local": "^1.0.0",
-    "serve-favicon": "~2.3.0"
-  },
-  "devDependencies": {
-
+    "serve-favicon": "~2.3.0",
     "babel-core": "^6.24.1",
     "babel-loader": "^7.0.0",
     "babel-preset-env": "^1.4.0",
@@ -40,6 +36,9 @@
     "express-validator": "*",
     "passport": "*",
     "bcrypt": "*"
+
+  },
+  "devDependencies": {
 
   }
 
