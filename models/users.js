@@ -23,19 +23,19 @@ module.exports = function(sequelize,DataTypes){
         }
  
  
-    },
+    }
 
-        {
+        // {
             
-            classMethods: {
-                associate: function(models) {
+        //     classMethods: {
+        //         associate: function(models) {
 
-                    Customer.hasMany(models.Post, {
-                        onDelete: "cascade"
-                    });
-                }
-            }
-        }
+        //             Customer.hasMany(models.Post, {
+        //                 onDelete: "cascade"
+        //             });
+        //         }
+        //     }
+        // }
 );
 return users;
 
