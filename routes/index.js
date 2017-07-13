@@ -79,6 +79,13 @@ router.post('/register', function(req, res, next) {
 	        //         });
             // 	});
 			// });
+			
+			db.users.create({
+				username: username,
+				email: email,
+				password: hash
+			});
+
 		});
     }
 });
