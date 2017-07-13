@@ -1,4 +1,5 @@
-module.exports = function(sequelize, DataTypes) {
+var db = require('./index.js');
+module.exports = function(sequelize, DataTypes){
   var Post = sequelize.define("Post", {
     body: {
       type: DataTypes.STRING,
@@ -8,7 +9,7 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     authorId: {
-      type: DataTypes.INT,
+      type: DataTypes.INTEGER,
       allowNull: false,
     }
   ,
@@ -19,18 +20,19 @@ module.exports = function(sequelize, DataTypes) {
   userMood: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
-  },
-    
-      classMethods: {
-        associate: function(models) {
-          Post.belongsTo(models.user, {
-            foreignKey: {
-              allowNull: false
-            }
-          });
-        }
-      }
-  }  
+  }
+      // classMethods: {
+      //   associate: function(models) {
+      //     Post.belongsTo(models.user, {
+      //       foreignKey: {
+      //         allowNull: false
+      //       }
+      //     });
+      //   }
+      // }
+  }
   );
+  // Post.belongsTo(users);
+  console.log(db.users);
   return Post;
 };

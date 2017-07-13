@@ -1,9 +1,9 @@
 module.exports = function(sequelize,DataTypes){
     var users = sequelize.define("users", {
- 
 
 
- 
+
+
         username: {
             type: DataTypes.STRING(15),
             allowNull: false
@@ -16,26 +16,26 @@ module.exports = function(sequelize,DataTypes){
                 isEmail: true
             }
         },
- 
+
         password: {
             type: DataTypes.STRING(60),
             allowNull: false
         }
- 
- 
-    }
 
-        // {
-            
-        //     classMethods: {
-        //         associate: function(models) {
 
-        //             Customer.hasMany(models.Post, {
-        //                 onDelete: "cascade"
-        //             });
-        //         }
-        //     }
-        // }
+    },
+
+        {
+
+            classMethods: {
+                associate: function(models) {
+
+                    Customer.hasMany(models.Post, {
+                        onDelete: "cascade"
+                    });
+                }
+            }
+        }
 );
 return users;
 
