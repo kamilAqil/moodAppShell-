@@ -66,9 +66,9 @@ router.post('/register', function(req, res, next) {
 	    const password = req.body.password;
 
 		// const db = require('../db.js');
-		// const db = require('../models/users.js');	
+		// const db = require('../models/users.js');
 	    bcrypt.hash(password, saltRounds, function(err, hash) {
-			
+
 		    // db.query('INSERT INTO users (username, email, password) VALUES (?, ?, ?)', [username, email, hash], function(error, results, fields) {
 		    // 	if (error) throw error;
 
@@ -82,7 +82,7 @@ router.post('/register', function(req, res, next) {
 	        //         });
             // 	});
 			// });
-			
+
 			db.users.create({
 				username: username,
 				email: email,
@@ -106,12 +106,12 @@ passport.deserializeUser(function(user_id, done) {
 });
 
 
-function authenticationMiddleware () {  
+function authenticationMiddleware () {
 	return (req, res, next) => {
 		console.log(`req.session.passport.user: ${JSON.stringify(req.session.passport)}`);
 
 	    if (req.isAuthenticated()) return next();
-	    res.redirect('/login')
+	    res.redirect('/login');
 	}
 }
 
