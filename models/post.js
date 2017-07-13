@@ -8,11 +8,6 @@ module.exports = function(sequelize, DataTypes){
         len: [1]
       }
     },
-    authorId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    }
-  ,
   appMood: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
