@@ -1,46 +1,34 @@
-<!doctype html>
-<html class="no-js" lang="">
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>{{ title }}</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <!-- Place favicon.ico in the root directory -->
-</head>
-
-<body>
-
-
-    <div class="container">
-        <div class="header clearfix">
-            <nav>
-                <ul class="nav nav-pills float-right">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    {{#if isAuthenticated}}
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="/logout">Logout</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/profile">Profile</a>
-                    </li>
-                    {{else}}
-                    
-                    <li class="nav-item">
-                        <a class="nav-link" href="/login">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/register">Register</a>
-                    </li>
-                    {{/if}}
-
-                </ul>
-            </nav>
-
+    <nav class="navbar navbar-default" id="nav-color">
+        <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#" style="color:white">Mood Tracker 3000 </a>
+        <img class="emojiGroup" src="/images/emojiGroupIcons.svg" />
         </div>
+
+        <ul class="nav navbar-nav navbar-right">
+            <li class="nav-item">
+                <a class="nav-link active" href="/" style="color:white">Home <span class="sr-only">(current)</span></a>
+            </li>
+            {{#if isAuthenticated}}
+
+            <li class="nav-item">
+                <a class="nav-link" href="/logout" style="color:white">Logout</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/profile" style="color:white">Profile</a>
+            </li>
+            {{else}}
+
+            <li class="nav-item">
+                <a class="nav-link" href="/login" style="color:white">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/register" style="color:white">Register</a>
+            </li>
+            {{/if}}
+
+        </ul>
+        </div>
+    </nav>
+

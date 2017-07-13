@@ -38,6 +38,14 @@ router.get('/entry',function(req,res,next){
 	res.render('journalEntry'),{title : ' journal'};
 });
 
+router.get('/userDash',function(req,res,next){
+	res.render('userDash'),{title : 'User Dashboard'};
+});
+
+router.get('/userDetailedHistory',function(req,res,next){
+	res.render('userDetailedHistory'),{title : 'User Detailed History'};
+});
+
 
 router.post('/register', function(req, res, next) {
 	req.checkBody('username', 'you must enter a username').notEmpty();
