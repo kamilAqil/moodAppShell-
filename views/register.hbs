@@ -1,6 +1,20 @@
-{{> header }}
 <div class="container">
-    <h1>{{title}}</h1>
+    <div class="row">
+        <div class="col-sm-12 text-center">
+            <h1 id="loginHeader">MOOD TRACKER 3000</h1>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-sm-12 text-center">
+            <img id="emojiLogin" src="/images/emojiGroupIcons.svg">
+        </div>
+    </div>
+    <br>
+
+
+
+<div class="container">
 
     {{#if errors}}
         {{#each errors}}
@@ -14,6 +28,8 @@
 
     <form method="POST" action="/register">
 
+
+<label for="exampleInputEmail1">Register</label>
         <div class="form-group">
         <label for="username">User name</label>
         <input type="text" class="form-control" name="username" aria-describedby="emailHelp" placeholder="username">
@@ -35,7 +51,7 @@
         <input type="password" class="form-control" name="passwordMatch" placeholder="Re-Enter Password">
         </div>
 
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary" id="registerSubmitButton">Submit</button>
 
     </form>
 </div>

@@ -50,6 +50,14 @@ router.get('/entry', function(req, res, next) {
     };
 });
 
+router.get('/userDash',function(req,res,next){
+	res.render('userDash'),{title : 'User Dashboard'};
+});
+
+router.get('/userDetailedHistory',function(req,res,next){
+	res.render('userDetailedHistory'),{title : 'User Detailed History'};
+});
+
 router.get('/register', function(req, res, next) {
     res.render('register');
 });
