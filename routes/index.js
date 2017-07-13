@@ -4,7 +4,7 @@ var expressValidator = require('express-validator');
 var passport = require('passport');
 var bcrypt = require('bcrypt');
 const saltRounds = 10;
-
+var db = require('../models');
 
 
 
@@ -30,14 +30,17 @@ router.post('/login', passport.authenticate('local', {
 }));
 
 
-router.get('/register', function(req, res, next) {
-  res.render('register', { title: 'Registeration' });
-});
+// router.get('/register', function(req, res, next) {
+//   res.render('register', { title: 'Registeration' });
+// });
 
 router.get('/entry',function(req,res,next){
 	res.render('journalEntry'),{title : ' journal'};
 });
 
+router.get('/register',function(req,res,next){
+	res.render('register');
+});
 
 router.post('/register', function(req, res, next) {
 	req.checkBody('username', 'you must enter a username').notEmpty();
@@ -63,7 +66,7 @@ router.post('/register', function(req, res, next) {
 	    const password = req.body.password;
 
 		// const db = require('../db.js');
-		const db = require('../models/users.js');	
+		// const db = require('../models/users.js');	
 	    bcrypt.hash(password, saltRounds, function(err, hash) {
 			
 		    // db.query('INSERT INTO users (username, email, password) VALUES (?, ?, ?)', [username, email, hash], function(error, results, fields) {
@@ -84,7 +87,11 @@ router.post('/register', function(req, res, next) {
 				username: username,
 				email: email,
 				password: hash
+			}).then(function(data){
+				data.get('id');
+				console.log(data.get('id'));
 			});
+			// console.log(db);
 
 		});
     }

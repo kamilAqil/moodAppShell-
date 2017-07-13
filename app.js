@@ -19,8 +19,11 @@ var bcrypt = require('bcrypt');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var models = require('./models');
+
 // var profile = require('./routes/profile')
 var app = express();
+//Routes
+var authRoute = require('./routes/auth.js')(app);
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
