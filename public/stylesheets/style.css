@@ -8,14 +8,14 @@ a {
   color: #00B7FF;
 }
 
-#mainContainer{
+/* #mainContainer{
   background-image: url('../images/RectangleBackground.svg');
   height: 1024px;
   width: 768px;
   margin: auto;
   position: relative;
   font-family: 'Slabo 27px', serif;
-}
+} */
 
 #logo{
   position: absolute;
@@ -359,7 +359,7 @@ a {
             margin-top: 12.5px;
     }
 
-  .navbar{
+  nav{
         background-color: #0073e5; 
         font-family: 'Francois One', sans-serif;
     }
