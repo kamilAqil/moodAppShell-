@@ -6,12 +6,14 @@ module.exports = function(sequelize,DataTypes){
 
         username: {
             type: DataTypes.STRING(15),
-            allowNull: false
+            allowNull: false,
+            unique: true
         },
 
         email: {
             type: DataTypes.STRING(100),
             allowNull: false,
+            unique: true,
             validate: {
                 isEmail: true
             }
