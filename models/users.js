@@ -1,10 +1,5 @@
-
-
-
-
-
-
-var users = sequelize.define("users", {
+module.exports = function(sequelize,DataTypes){
+    var users = sequelize.define("users", {
  
 
 
@@ -23,7 +18,7 @@ var users = sequelize.define("users", {
         },
  
         password: {
-            type: DataTypes.STRING.BINARY(60),
+            type: DataTypes.STRING(60),
             allowNull: false
         }
  
@@ -46,6 +41,4 @@ return users;
 
 // Syncs with DB
 //users.sync();
-
-// Makes the users Model available for other files (will also create a table)
-module.exports = users;
+}
