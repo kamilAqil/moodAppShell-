@@ -76,7 +76,7 @@ router.post('/entry',authenticationMiddleware(), function (req, res, next) {
         console.log('error:', error);
     else
 
-        console.log(response.document_tone.tone_categories[0].tones[3].score);
+        console.log(typeof(response.document_tone.tone_categories[0].tones[3].score));
         db.Post.create({
             
             body: req.body.moodEntry,
