@@ -19,7 +19,9 @@ module.exports = function(sequelize, DataTypes){
   userMood: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
+  }
   },
+{
       classMethods: {
         associate: function(models) {
           Post.belongsTo(models.users, {
