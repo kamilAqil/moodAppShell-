@@ -8,6 +8,10 @@ module.exports = function(sequelize, DataTypes){
         len: [1]
       }
     },
+  postID: {
+      type: DataTypes.INTEGER,
+      allowNull : false
+  },
   appMood: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
@@ -15,19 +19,18 @@ module.exports = function(sequelize, DataTypes){
   userMood: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
-  }
-      // classMethods: {
-      //   associate: function(models) {
-      //     Post.belongsTo(models.user, {
-      //       foreignKey: {
-      //         allowNull: false
-      //       }
-      //     });
-      //   }
-      // }
-  }
-  );
+  },
+      classMethods: {
+        associate: function(models) {
+          Post.belongsTo(models.users, {
+            foreignKey: {
+              allowNull: false
+            }
+          });
+        }
+      }
+  });
   // Post.belongsTo(users);
-  console.log(db.users);
+  console.log(db);
   return Post;
 };
