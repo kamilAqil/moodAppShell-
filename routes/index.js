@@ -88,8 +88,12 @@ router.post('/register', function(req, res, next) {
 				email: email,
 				password: hash
 			}).then(function(data){
-				data.get('id');
-				console.log(data.get('id'));
+				const user_id = data.get('id');
+				req.login(user_id, function(err) {
+	                	
+	                    res.redirect('/profile');
+	                });
+			
 			});
 			// console.log(db);
 
