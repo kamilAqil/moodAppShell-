@@ -27,8 +27,7 @@
 .emojiGroup {
             height: 20px;
             margin-top: 12.5px;
-    }
-
+    
 #emojiLogin {
             height: 125px;
     }
@@ -37,6 +36,7 @@
         background-color: #0073e5; 
         font-family: 'Francois One', sans-serif;
     }
+
     #edit, #delete {
         background-color: rgba(255, 0, 101, 0.75);
         color: white;

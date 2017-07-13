@@ -1,140 +1,172 @@
 var express = require('express');
+var fs = require('fs');
 var path = require('path');
+var Sequelize = require('sequelize');
+var env = process.env.NODE_ENV || 'development';
+var config = require(path.join(__dirname, 'config', 'config.json'))[env];
+var sequelize = new Sequelize(config.database, config.username, config.password, config);
 var favicon = require('serve-favicon');
+// auth++++++
+var passport = require('passport');
+var session = require('express-session');
+var LocalStrategy = require('passport-local').Strategy;
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
+const MySQLStore = require('express-session-sequelize')(session.Store);
 var bodyParser = require('body-parser');
 var expressValidator = require('express-validator');
+// var MySQLStore = require('express-mysql-session')(session);
+// var sequelizeStore = require('express-sequelize-session');
 
-// auth++++++
-var session = require('express-session');
-var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
-var MySQLStore = require('express-mysql-session')(session);
 var bcrypt = require('bcrypt');
-
 var index = require('./routes/index');
 var users = require('./routes/users');
+var models = require('./models');
+
 // var profile = require('./routes/profile')
-
 var app = express();
-
-require('dotenv').config();
-
+//Routes
+var authRoute = require('./routes/auth.js')(app);
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
-
+app.use(express.static(path.join(__dirname, 'public')));
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(expressValidator());
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-var options = {
-  host: "localhost",
-  user: "root",
-  password: "Qwerty1368",
-  database : "login"
-};
-var sessionStore = new MySQLStore(options);
-app.use(session({
-  // move the secret key to env file
-    secret: '111111fhhfghdfghdfgh',
-    resave: false,
-    store: sessionStore,
-    saveUninitialized: false,
-    // cookie: { secure: true }
-}));
-app.use(passport.initialize());
-app.use(passport.session());
-app.use(function(req, res, next){
-  res.locals.isAuthenticated = req.isAuthenticated();
-  next();
-});
-
-app.use('/', index);
-app.use('/users', users);
-
-passport.use(new LocalStrategy(
-  function(username, password, done) {
-    // User.findOne({ username: username }, function (err, user) {
-    //   if (err) { return done(err); }
-    //   if (!user) {
-    //     return done(null, false, { message: 'Incorrect username.' });
-    //   }
-    //   if (!user.validPassword(password)) {
-    //     return done(null, false, { message: 'Incorrect password.' });
-    //   }
-    console.log(username);
-    console.log(password);
-    const db= require('./db');
-
-    db.query('SELECT id, password FROM users WHERE username = ?', [username], function(err, results, fields){
-        if (err) {done(err)};
-
-        if (results.length === 0){
-          done(null, false);
-        }else{
-
-          const hash =results[0].password.toString();
-          bcrypt.compare(password, hash, function(err, response){
-            if(response) {
-                return done(null, {user_id:results[0].id});
-            }else{
-              return done(null, false);
-            }
-          })
-        };
-
-        
-    })
-      
-  }
-));
-
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
-});
-
-// error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
-});
-
 
 // Handlebars default config
 const hbs = require('hbs');
-const fs = require('fs');
-
 const partialsDir = __dirname + '/views/partials';
-
 const filenames = fs.readdirSync(partialsDir);
 
-filenames.forEach(function (filename) {
-  const matches = /^([^.]+).hbs$/.exec(filename);
-  if (!matches) {
-    return;
-  }
-  const name = matches[1];
-  const template = fs.readFileSync(partialsDir + '/' + filename, 'utf8');
-  hbs.registerPartial(name, template);
+filenames.forEach(function(filename) {
+    const matches = /^([^.]+).hbs$/.exec(filename);
+    if (!matches) {
+        return;
+    }
+    const name = matches[1];
+    const template = fs.readFileSync(partialsDir + '/' + filename, 'utf8');
+    hbs.registerPartial(name, template);
 });
 
 hbs.registerHelper('json', function(context) {
     return JSON.stringify(context, null, 2);
 });
+
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+    extended: false
+}));
+app.use(expressValidator());
+app.use(cookieParser());
+// For Passport
+const sessionStore = new MySQLStore({
+    db: sequelize,
+});
+app.use(session({
+    secret: 'keep it secret, keep it safe.',
+    store: sessionStore,
+    resave: false,
+    saveUninitialized: false,
+}));
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
+
+models.sequelize.sync().then(function() {
+    console.log('looks fine');
+}).catch(function(err) {
+    consol.log(err);
+});
+
+// var options = {
+//   host: "us-cdbr-iron-east-03.cleardb.net",
+//   user: "babbe505ecfb1b",
+//   password: "84f122c8",
+//   database : "heroku_a9c3b7ff3b5f692"
+// };
+// var sessionStore = new MySQLStore(options);
+// app.use(session({
+//     // move the secret key to env file
+//     secret: '111111fhhfghdfghdfgh',
+//     resave: false,
+//     store: sessionStore,
+//     saveUninitialized: false,
+//     // cookie: { secure: true }
+// }));
+
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(function(req, res, next) {
+    res.locals.isAuthenticated = req.isAuthenticated();
+    next();
+});
+
+app.use('/', index);
+app.use('/users', users);
+
+
+passport.use(new LocalStrategy(
+    function(username, password, done) {
+
+
+        const db = require('./models');
+        db.users.findOne({
+            where: {
+                username: username
+            }
+        }).then(function(results) {
+          console.log("++++++++");
+          console.log(results);
+          console.log("++++++++");
+
+            // if (err) {
+            //     done(err)
+            // };
+
+            if (results.length === 0) {
+                done(null, false);
+            } else {
+
+                const hash = results.dataValues.password.toString();
+                bcrypt.compare(password, hash, function(err, response) {
+                    if (response) {
+                        return done(null, {
+                            user_id: results.dataValues.id
+                        });
+                    } else {
+                        return done(null, false);
+                    }
+                })
+            };
+
+        })
+       
+
+    }
+));
+
+
+
+
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+    var err = new Error('Not Found');
+    err.status = 404;
+    next(err);
+});
+
+// error handler
+app.use(function(err, req, res, next) {
+    // set locals, only providing error in development
+    res.locals.message = err.message;
+    res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+    // render the error page
+    res.status(err.status || 500);
+    res.render('error');
+});
+
 
 
 module.exports = app;
