@@ -88,12 +88,8 @@ router.post('/register', function(req, res, next) {
 				email: email,
 				password: hash
 			}).then(function(data){
-				const user_id = data.get('id');
-				req.login(user_id, function(err) {
-	                	
-	                    res.redirect('/profile');
-	                });
-			
+				data.get('id');
+				console.log(data.get('id'));
 			});
 			// console.log(db);
 
@@ -115,6 +111,7 @@ function authenticationMiddleware () {
 		console.log(`req.session.passport.user: ${JSON.stringify(req.session.passport)}`);
 
 	    if (req.isAuthenticated()) return next();
+			
 	    res.redirect('/login');
 	}
 }

@@ -65,20 +65,20 @@ models.sequelize.sync().then(function(){
   consol.log(err);
 });
 // comment out this passport code for now
-// app.use(session({
-//   // move the secret key to env file
-//     secret: '111111fhhfghdfghdfgh',
-//     resave: false,
-//     store: sessionStore,
-//     saveUninitialized: false,
-//     // cookie: { secure: true }
-// }));
-// app.use(passport.initialize());
-// app.use(passport.session());
-// app.use(function(req, res, next){
-//   res.locals.isAuthenticated = req.isAuthenticated();
-//   next();
-// });
+app.use(session({
+  // move the secret key to env file
+    secret: '111111fhhfghdfghdfgh',
+    resave: false,
+    store: sessionStore,
+    saveUninitialized: false,
+    // cookie: { secure: true }
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(function(req, res, next){
+  res.locals.isAuthenticated = req.isAuthenticated();
+  next();
+});
 
 app.use('/', index);
 app.use('/users', users);
