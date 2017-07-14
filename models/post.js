@@ -1,5 +1,5 @@
 var db = require('./index.js');
-module.exports = function(sequelize, DataTypes){
+module.exports = function (sequelize, DataTypes) {
   var Post = sequelize.define("Post", {
     body: {
       type: DataTypes.STRING,
@@ -8,22 +8,22 @@ module.exports = function(sequelize, DataTypes){
         len: [1]
       }
     },
-  postID: {
+    postID: {
       type: DataTypes.INTEGER,
-      allowNull : false
-  },
-  appMood: {
+      allowNull: false
+    },
+    appMood: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
-  },
-  userMood: {
+    },
+    userMood: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
-  }
+    }
   },
-{
+    {
       classMethods: {
-        associate: function(models) {
+        associate: function (models) {
           Post.belongsTo(models.users, {
             foreignKey: {
               allowNull: true
@@ -31,7 +31,7 @@ module.exports = function(sequelize, DataTypes){
           });
         }
       }
-  });
+    });
   // Post.belongsTo(users);
   console.log(db);
   return Post;
