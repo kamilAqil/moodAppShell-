@@ -29,14 +29,14 @@ router.get('/login', function(req, res) {
 });
 
 router.post('/login', passport.authenticate('local', {
-    successRedirect: '/profile',
+    successRedirect: '/userDash',
     failureRedirect: '/login'
 }));
 
 router.get('/logout', function(req, res) {
 	req.logOut();
 	req.session.destroy();
-	res.redirect('/');
+	res.redirect('/login');
 });
 
 
