@@ -1,9 +1,6 @@
 module.exports = function(sequelize,DataTypes){
     var users = sequelize.define("users", {
 
-
-
-
         username: {
             type: DataTypes.STRING(15),
             allowNull: false,
@@ -25,20 +22,27 @@ module.exports = function(sequelize,DataTypes){
         }
 
 
-    },
+    });
 
-        {
+    // Class Method
+users.associate = function (models) {
 
-            classMethods: {
-                associate: function(models) {
+    users.hasMany(models.Post, {
+    onDelete: "cascade"
+    });
+    
+};
 
-                    users.hasMany(models.Post, {
-                        onDelete: "cascade"
-                    });
-                }
-            }
-        }
-);
+    // {
+    //   classMethods: {
+    //     associate: function(models) {
+    //       users.hasMany(models.Post, {
+    //         onDelete: "cascade"
+    //       });
+    //     }
+    //   }
+    // }
+
 return users;
 
 // Syncs with DB

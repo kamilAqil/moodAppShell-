@@ -1,4 +1,4 @@
-var db = require('./index.js');
+
 module.exports = function (sequelize, DataTypes) {
   var Post = sequelize.define("Post", {
     body: {
@@ -8,31 +8,41 @@ module.exports = function (sequelize, DataTypes) {
         len: [1]
       }
     },
-    postID: {
-      type: DataTypes.INTEGER,
-      allowNull: false
-    },
     appMood: {
       type: DataTypes.BOOLEAN,
-      allowNull: false,
+      allowNull: true,
     },
     userMood: {
       type: DataTypes.BOOLEAN,
-      allowNull: false,
+      allowNull: true,
     }
-  },
-    {
-      classMethods: {
-        associate: function (models) {
-          Post.belongsTo(models.users, {
-            foreignKey: {
-              allowNull: true
-            }
-          });
-        }
+  });
+
+  Post.associate = function (models) {
+
+    Post.belongsTo(models.users, {
+      foreignKey: {
+        allowNull: false
       }
     });
-  // Post.belongsTo(users);
-  console.log(db);
+    
+};
+
+
+
+    // {
+    //   // We're saying that we want our Author to have Posts
+    //   classMethods: {
+    //     associate: function(models) {
+    //       // An Author (foreignKey) is required or a Post can't be made
+    //       Post.belongsTo(models.users, {
+    //         foreignKey: {
+    //           allowNull: false
+    //         }
+    //       });
+    //     }
+    //   }
+    // }
+ 
   return Post;
 };
