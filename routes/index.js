@@ -96,7 +96,7 @@ router.post('/register', function(req, res, next) {
                 const user_id = data.get('id');
                 req.login(user_id, function(err) {
 
-                    res.redirect('/profile');
+                    res.redirect('/userDash');
                 });
 
             });
