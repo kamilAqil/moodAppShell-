@@ -5,6 +5,10 @@ var passport = require('passport');
 var bcrypt = require('bcrypt');
 const saltRounds = 10;
 var db = require('../models');
+// var user_id;
+
+
+
 
 
 
@@ -28,10 +32,16 @@ router.get('/login', function (req, res) {
     })
 });
 
+
+
 router.post('/login', passport.authenticate('local', {
     successRedirect: '/userDash',
     failureRedirect: '/login'
-}));
+}), function (req, res) {
+    console.log("-----");
+    console.log(req.user);
+    console.log("---------");
+});
 
 router.get('/logout', function (req, res) {
     req.logOut();
@@ -106,6 +116,8 @@ router.post('/register', function (req, res, next) {
     }
 });
 
+
+
 passport.serializeUser(function (user_id, done) {
     done(null, user_id);
 });
@@ -117,22 +129,26 @@ passport.deserializeUser(function (user_id, done) {
 
 function authenticationMiddleware() {
     return (req, res, next) => {
+
         console.log(`req.session.passport.user: ${JSON.stringify(req.session.passport)}`);
 
         if (req.isAuthenticated()) return next();
         res.redirect('/login');
     }
-}
+};
+
 
 router.post('/entry', function (req, res, next) {
-    console.log(req.body);
+
+    
     db.Post.create({
         body: req.body.moodEntry,
-        authorId: req.body.authorId
+        userId: req.user.user_id
+
 
     })
         .then(function (dbPost) {
-            res.json(dbPost);
+            res.render('userDash'), { title: 'User Dashboard' };
         });
 
 });

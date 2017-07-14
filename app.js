@@ -15,13 +15,16 @@ var cookieParser = require('cookie-parser');
 const MySQLStore = require('express-session-sequelize')(session.Store);
 var bodyParser = require('body-parser');
 var expressValidator = require('express-validator');
+
+
+
 // var MySQLStore = require('express-mysql-session')(session);
 // var sequelizeStore = require('express-sequelize-session');
 
 var bcrypt = require('bcrypt');
 var index = require('./routes/index');
 var users = require('./routes/users');
-var models = require('./models');
+var db = require('./models');
 
 // var profile = require('./routes/profile')
 var app = express();
@@ -73,10 +76,10 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 
-models.sequelize.sync().then(function() {
+// require("./index.js")(app);
+
+db.sequelize.sync().then(function() {
     console.log('looks fine');
-}).catch(function(err) {
-    consol.log(err);
 });
 
 // var options = {
@@ -116,13 +119,7 @@ passport.use(new LocalStrategy(
                 username: username
             }
         }).then(function(results) {
-          console.log("++++++++");
-          console.log(results);
-          console.log("++++++++");
 
-            // if (err) {
-            //     done(err)
-            // };
 
             if (results.length === 0) {
                 done(null, false);
@@ -131,6 +128,8 @@ passport.use(new LocalStrategy(
                 const hash = results.dataValues.password.toString();
                 bcrypt.compare(password, hash, function(err, response) {
                     if (response) {
+                        
+                        
                         return done(null, {
                             user_id: results.dataValues.id
                         });
@@ -145,6 +144,7 @@ passport.use(new LocalStrategy(
 
     }
 ));
+
 
 
 
