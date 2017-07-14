@@ -126,17 +126,14 @@ function authenticationMiddleware() {
 
 router.post('/entry', function (req, res, next) {
     console.log(req.body);
-     console.log("++++++++");
-     console.log(req.body.happy.value);
-    // db.Post.create({
-    //     body: req.body.moodEntry,
-    //     userMood: req.body.value,
-    //     authorId: req.body.authorId
+    db.Post.create({
+        body: req.body.moodEntry,
+        authorId: req.body.authorId
 
-    // })
-    //     .then(function (dbPost) {
-    //         res.json(dbPost);
-    //     });
+    })
+        .then(function (dbPost) {
+            res.json(dbPost);
+        });
 
 });
 
