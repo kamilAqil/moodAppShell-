@@ -20,11 +20,11 @@ router.get('/', function (req, res, next) {
     });
 });
 
-router.get('/profile', authenticationMiddleware(), function (req, res) {
-    res.render('profile', {
-        title: 'Profile'
-    })
-});
+// router.get('/profile', authenticationMiddleware(), function (req, res) {
+//     res.render('profile', {
+//         title: 'Profile'
+//     })
+// });
 
 router.get('/login', function (req, res) {
     res.render('login', {
@@ -38,9 +38,7 @@ router.post('/login', passport.authenticate('local', {
     successRedirect: '/userDash',
     failureRedirect: '/login'
 }), function (req, res) {
-    console.log("-----");
-    console.log(req.user);
-    console.log("---------");
+ 
 });
 
 router.get('/logout', function (req, res) {
@@ -54,14 +52,45 @@ router.get('/logout', function (req, res) {
 //   res.render('register', { title: 'Registeration' });
 // });
 
-router.get('/entry', function (req, res, next) {
+router.get('/entry',authenticationMiddleware(), function (req, res, next) {
     res.render('journalEntry'), {
         title: ' journal'
     };
 });
 
-router.get('/userDash', function (req, res, next) {
-    res.render('userDash'), { title: 'User Dashboard' };
+router.post('/entry',authenticationMiddleware(), function (req, res, next) {
+
+    
+    db.Post.create({
+        body: req.body.moodEntry,
+        userId: req.user.user_id
+
+
+    })
+        .then(function (dbPost) {
+            res.render('userDash'), { title: 'User Dashboard' };
+        });
+
+});
+
+router.get('/userDash',authenticationMiddleware(), function (req, res, next) {
+    console.log("-----");
+    console.log(req.user);
+    console.log("---------");
+    var query = {};
+    if (req.user){
+        query.userId =req.user.user_id
+    }
+    db.Post.findAll({
+      where: query,
+      include: [db.users]
+    }).then(function(dbPost) {
+           var hbsObject = {
+                Post: dbPost
+            };
+      res.render('userDash', hbsObject), { title: 'User Dashboard' };
+    });
+    
 });
 
 router.get('/userDetailedHistory', function (req, res, next) {
@@ -138,19 +167,6 @@ function authenticationMiddleware() {
 };
 
 
-router.post('/entry', function (req, res, next) {
 
-    
-    db.Post.create({
-        body: req.body.moodEntry,
-        userId: req.user.user_id
-
-
-    })
-        .then(function (dbPost) {
-            res.render('userDash'), { title: 'User Dashboard' };
-        });
-
-});
 
 module.exports = router;

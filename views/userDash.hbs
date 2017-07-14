@@ -21,7 +21,17 @@
         <br>
         <div class="row">
             <div class="col-sm-12">
-            <div class="well well-lg"><a href="http://placeholder.com"><img src="http://via.placeholder.com/350x150"></a></div>
+            <div class="well well-lg">
+                {{#if Post}}
+                    {{#each Post}}
+                        <div class="alert alert-danger" role="alert">
+                            {{this.body}}
+                        </div>
+                        
+                    {{/each}}
+
+                {{/if}}
+            </div>
             </div>
         </div>
         <br>
