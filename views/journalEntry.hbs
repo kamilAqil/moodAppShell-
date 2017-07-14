@@ -1,43 +1,43 @@
 {{> header}}
 
-<div class="container"> 
-        <div class="row">
-            <div class="col-sm-12 text-center">
-                <h1 class="titles">How was your day?</h1>
-            </div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 text-center">
+            <h1 class="titles">How was your day?</h1>
         </div>
-        <hr>
-        <div class="row">
-            <div class="col-sm-4 text-left">
-                <h4 id="date">Monday July 10, 2017</h3>
-            </div>
-            <div class="col-sm-8 text-right">
-                <h4 id="word-count">Word Count: 52</h3>
-            </div>
-        </div>
-        <hr>
-        <div class="row">
-            <div class="col-sm-6 text-left">
-                <span>How are you feeling?</span>
-
-                <input type="image" id="happyEmoji" src="/images/happyEmoji.svg" />
-                <input type="image" id="sadEmoji" src="/images/sadEmoji.svg" />
-            </div>
-        </div>
-        <br>
-        <form method="POST" action="/login">
-            <div class="row">    
-                <div class="col-sm-12">
-                    <textarea class="form-control" rows="18"></textarea>
-                </div>
-            </div>
-            <br>
-            <div class="row">
-                <div class="col-sm-8">
-                    <button type="submit" class="btn btn-default btn-block" id="submit">Submit</button>
-                </div>
-            </div>
-        </form>   
-        <br><br> 
     </div>
+    <hr>
+    <div class="row">
+        <div class="col-sm-4 text-left">
+            <h4 id="date">Monday July 10, 2017</h3>
+        </div>
+        <div class="col-sm-8 text-right">
+            <h4 id="word-count">Word Count: 52</h3>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+    <form method="POST" action="/entry">
+             {{!-- <div class="col-sm-6 text-left">
+                 <span>How are you feeling?</span>
+                 <br>
+                <input type="image" id="happyEmoji" name="happy" src="/images/happyEmoji.svg" value="0" />
+                <input type="image" id="sadEmoji" name="sad" src="/images/sadEmoji.svg" value="1" /> 
+            </div>  --}}
+    </div>
+    <br>
 
+    <div class="row">
+        <div class="col-sm-12">
+            <textarea class="form-control" name="moodEntry" rows="18"></textarea>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-sm-8">
+            <button type="submit" class="btn btn-default btn-block" id="submit">Submit</button>
+        </div>
+    </div>
+    </form>
+    <br><br>
+</div>

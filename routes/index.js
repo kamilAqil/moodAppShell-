@@ -8,7 +8,7 @@ var db = require('../models');
 
 
 
-router.get('/', function(req, res, next) {
+router.get('/', function (req, res, next) {
     console.log(req.user);
     console.log(req.isAuthenticated());
     res.render('home', {
@@ -16,13 +16,13 @@ router.get('/', function(req, res, next) {
     });
 });
 
-router.get('/profile', authenticationMiddleware(), function(req, res) {
+router.get('/profile', authenticationMiddleware(), function (req, res) {
     res.render('profile', {
         title: 'Profile'
     })
 });
 
-router.get('/login', function(req, res) {
+router.get('/login', function (req, res) {
     res.render('login', {
         title: 'Login'
     })
@@ -33,10 +33,10 @@ router.post('/login', passport.authenticate('local', {
     failureRedirect: '/login'
 }));
 
-router.get('/logout', function(req, res) {
-	req.logOut();
-	req.session.destroy();
-	res.redirect('/login');
+router.get('/logout', function (req, res) {
+    req.logOut();
+    req.session.destroy();
+    res.redirect('/login');
 });
 
 
@@ -44,25 +44,25 @@ router.get('/logout', function(req, res) {
 //   res.render('register', { title: 'Registeration' });
 // });
 
-router.get('/entry', function(req, res, next) {
+router.get('/entry', function (req, res, next) {
     res.render('journalEntry'), {
         title: ' journal'
     };
 });
 
-router.get('/userDash',function(req,res,next){
-	res.render('userDash'),{title : 'User Dashboard'};
+router.get('/userDash', function (req, res, next) {
+    res.render('userDash'), { title: 'User Dashboard' };
 });
 
-router.get('/userDetailedHistory',function(req,res,next){
-	res.render('userDetailedHistory'),{title : 'User Detailed History'};
+router.get('/userDetailedHistory', function (req, res, next) {
+    res.render('userDetailedHistory'), { title: 'User Detailed History' };
 });
 
-router.get('/register', function(req, res, next) {
+router.get('/register', function (req, res, next) {
     res.render('register');
 });
 
-router.post('/register', function(req, res, next) {
+router.post('/register', function (req, res, next) {
     req.checkBody('username', 'you must enter a username').notEmpty();
     req.checkBody('username', 'Username must be between 4-15 characters long.').len(4, 15);
     req.checkBody('email', 'The email you entered is invalid, please try again.').isEmail();
@@ -85,16 +85,16 @@ router.post('/register', function(req, res, next) {
         const email = req.body.email;
         const password = req.body.password;
 
-        bcrypt.hash(password, saltRounds, function(err, hash) {
+        bcrypt.hash(password, saltRounds, function (err, hash) {
 
 
             db.users.create({
                 username: username,
                 email: email,
                 password: hash
-            }).then(function(data) {
+            }).then(function (data) {
                 const user_id = data.get('id');
-                req.login(user_id, function(err) {
+                req.login(user_id, function (err) {
 
                     res.redirect('/userDash');
                 });
@@ -106,11 +106,11 @@ router.post('/register', function(req, res, next) {
     }
 });
 
-passport.serializeUser(function(user_id, done) {
+passport.serializeUser(function (user_id, done) {
     done(null, user_id);
 });
 
-passport.deserializeUser(function(user_id, done) {
+passport.deserializeUser(function (user_id, done) {
     done(null, user_id);
 });
 
@@ -124,5 +124,20 @@ function authenticationMiddleware() {
     }
 }
 
+router.post('/entry', function (req, res, next) {
+    console.log(req.body);
+     console.log("++++++++");
+     console.log(req.body.happy.value);
+    // db.Post.create({
+    //     body: req.body.moodEntry,
+    //     userMood: req.body.value,
+    //     authorId: req.body.authorId
+
+    // })
+    //     .then(function (dbPost) {
+    //         res.json(dbPost);
+    //     });
+
+});
 
 module.exports = router;
