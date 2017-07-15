@@ -8,12 +8,12 @@ module.exports = function (sequelize, DataTypes) {
         len: [1]
       }
     },
-    appMood: {
-      type: DataTypes.BOOLEAN,
+    joy: {
+      type: DataTypes.DECIMAL,
       allowNull: true,
     },
-    userMood: {
-      type: DataTypes.BOOLEAN,
+    sadness: {
+      type: DataTypes.DECIMAL,
       allowNull: true,
     }
   });

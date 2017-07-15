@@ -5,6 +5,12 @@ var passport = require('passport');
 var bcrypt = require('bcrypt');
 const saltRounds = 10;
 var db = require('../models');
+var ToneAnalyzerV3 = require('watson-developer-cloud/tone-analyzer/v3');
+var tone_analyzer = new ToneAnalyzerV3({
+  username: '62468a6c-fc11-468e-a2cb-3f484ac99f8b',
+  password: 'MwHQbHMKMkFO',
+  version_date: '2016-05-19'
+});
 // var user_id;
 
 
@@ -60,16 +66,31 @@ router.get('/entry',authenticationMiddleware(), function (req, res, next) {
 
 router.post('/entry',authenticationMiddleware(), function (req, res, next) {
 
-    
-    db.Post.create({
-        body: req.body.moodEntry,
-        userId: req.user.user_id
+    var params = {
+    // Get the text from the JSON file.
+    text: req.body.moodEntry
+    };
+
+    tone_analyzer.tone(params, function(error, response) {
+    if (error)
+        console.log('error:', error);
+    else
+        
+        db.Post.create({
+            
+            body: req.body.moodEntry,
+            userId: req.user.user_id,
+            appMood: response.document_tone.tone_categories[0].tones[3].score ,
+            userMood:response.document_tone.tone_categories[0].tones[4].score
 
 
-    })
+
+        })
         .then(function (dbPost) {
             res.render('userDash'), { title: 'User Dashboard' };
         });
+    });
+
 
 });
 
