@@ -44,7 +44,7 @@ router.post('/login', passport.authenticate('local', {
     successRedirect: '/userDash',
     failureRedirect: '/login'
 }), function (req, res) {
- 
+
 });
 
 router.get('/logout', function (req, res) {
@@ -78,7 +78,7 @@ router.post('/entry',authenticationMiddleware(), function (req, res, next) {
 
         console.log(typeof(response.document_tone.tone_categories[0].tones[3].score));
         db.Post.create({
-            
+
             body: req.body.moodEntry,
             userId: req.user.user_id,
             joy: response.document_tone.tone_categories[0].tones[3].score ,
@@ -110,9 +110,11 @@ router.get('/userDash',authenticationMiddleware(), function (req, res, next) {
            var hbsObject = {
                 Post: dbPost
             };
+            var objectForD3 = hbsObject;
+            console.log("This is object for d3 "+JSON.stringify(objectForD3));
       res.render('userDash', hbsObject), { title: 'User Dashboard' };
     });
-    
+
 });
 
 router.get('/userDetailedHistory', function (req, res, next) {
