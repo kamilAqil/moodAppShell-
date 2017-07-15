@@ -80,8 +80,8 @@ router.post('/entry',authenticationMiddleware(), function (req, res, next) {
             
             body: req.body.moodEntry,
             userId: req.user.user_id,
-            appMood: response.document_tone.tone_categories[0].tones[3].score ,
-            userMood:response.document_tone.tone_categories[0].tones[4].score
+            joy: response.document_tone.tone_categories[0].tones[3].score ,
+            sadness:response.document_tone.tone_categories[0].tones[4].score
 
 
 
