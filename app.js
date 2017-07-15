@@ -55,7 +55,7 @@ filenames.forEach(function(filename) {
 hbs.registerHelper('json', function(context) {
     return JSON.stringify(context, null, 2);
 });
-
+// derp
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -68,7 +68,7 @@ const sessionStore = new MySQLStore({
     db: sequelize,
 });
 app.use(session({
-    secret: 'keep it secret, keep it safe.',
+    secret: config.secret,
     store: sessionStore,
     resave: false,
     saveUninitialized: false,
