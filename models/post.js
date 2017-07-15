@@ -9,11 +9,11 @@ module.exports = function (sequelize, DataTypes) {
       }
     },
     joy: {
-      type: DataTypes.DECIMAL,
+      type: DataTypes.FLOAT,
       allowNull: true,
     },
     sadness: {
-      type: DataTypes.DECIMAL,
+      type: DataTypes.FLOAT,
       allowNull: true,
     }
   });
