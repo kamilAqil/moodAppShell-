@@ -3,6 +3,8 @@ var router = express.Router();
 var expressValidator = require('express-validator');
 var passport = require('passport');
 var bcrypt = require('bcrypt');
+var d3 = require('d3');
+var dsv = require('d3-dsv');
 const saltRounds = 10;
 var db = require('../models');
 var ToneAnalyzerV3 = require('watson-developer-cloud/tone-analyzer/v3');
@@ -110,9 +112,11 @@ router.get('/userDash',authenticationMiddleware(), function (req, res, next) {
            var hbsObject = {
                 Post: dbPost
             };
-            var objectForD3 = hbsObject;
-            console.log("This is object for d3 "+JSON.stringify(objectForD3));
-      res.render('userDash', hbsObject), { title: 'User Dashboard' };
+            var objectForD3 = JSON.stringify(hbsObject);
+            console.log("\n\n object for d3"+objectForD3+"\n\n");
+            // var objectForDSV = d3.tsvFormat(hbsObject);
+            // console.log("\n\n object for d3"+objectForDSV+"\n\n");
+      res.render('userDash', hbsObject), { title: 'User Dashboard', objectForD3: objectForD3 };
     });
 
 });

@@ -12,7 +12,7 @@
   <body>
 
       {{{body}}}
- 
+
   </body>
   {{!--JQuery--}}
   <script
@@ -26,4 +26,15 @@
   var d = new Date();
   document.getElementById("date").innerHTML = d.toDateString();
   </script>
+  <!--d3-->
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <script src="https://d3js.org/d3-dsv.v1.min.js"></script>
+    <script>
+
+    var data = d3.csvParse(string);
+
+    </script>
+    <!--customD3-->
+    <script type="text/javascript" src="./js/dataVisualization.js">
+    </script>
 </html>
