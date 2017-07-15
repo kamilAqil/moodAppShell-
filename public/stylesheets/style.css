@@ -83,4 +83,14 @@ h3 {
 #postHistory {
     margin-top:5px;
 }
+
+.axis--x path {
+    display: none;
+}
+
+.line {
+    fill: none;
+    stroke: steelblue;
+    stroke-width: 1.5px;
+}
     
