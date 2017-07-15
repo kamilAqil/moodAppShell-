@@ -113,7 +113,7 @@ router.get('/userDash',authenticationMiddleware(), function (req, res, next) {
                 Post: dbPost
             };
 
-            fs.writeFile("./public/js/data.tsv","date"+" "+"joy"+" "+"sadness"+"\r\n",function(err) {
+            fs.writeFile("./public/data.tsv","date"+" "+"joy"+" "+"sadness"+"\r\n",function(err) {
 
                 if (err) {
                     return console.log(err);
@@ -146,7 +146,7 @@ router.get('/userDash',authenticationMiddleware(), function (req, res, next) {
                         var t1 = convertDate(d);
                         var t2 = parseFloat(hbsObject.Post[i].joy.toString())*100;
                         var t3 = parseFloat(hbsObject.Post[i].sadness.toString())*100;
-                    fs.appendFile("./public/js/data.tsv", t1+" "+t2+" "+t3+"\r\n", function(err) {
+                    fs.appendFile("./public/data.tsv", t1+" "+t2.toFixed(1)+" "+t3.toFixed(1)+"\r\n", function(err) {
 
                         // If an error was experienced we say it.
                         if (err) {
