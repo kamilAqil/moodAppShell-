@@ -13,6 +13,8 @@ var tone_analyzer = new ToneAnalyzerV3({
   password: 'MwHQbHMKMkFO',
   version_date: '2016-05-19'
 });
+const fs = require("fs");
+const os = require('os');
 // var user_id;
 
 
@@ -98,9 +100,7 @@ router.post('/entry',authenticationMiddleware(), function (req, res, next) {
 });
 
 router.get('/userDash',authenticationMiddleware(), function (req, res, next) {
-    console.log("-----");
-    console.log(req.user);
-    console.log("---------");
+
     var query = {};
     if (req.user){
         query.userId =req.user.user_id
@@ -112,11 +112,61 @@ router.get('/userDash',authenticationMiddleware(), function (req, res, next) {
            var hbsObject = {
                 Post: dbPost
             };
-            var objectForD3 = JSON.stringify(hbsObject);
-            console.log("\n\n object for d3"+objectForD3+"\n\n");
-            // var objectForDSV = d3.tsvFormat(hbsObject);
-            // console.log("\n\n object for d3"+objectForDSV+"\n\n");
-      res.render('userDash', hbsObject), { title: 'User Dashboard', objectForD3: objectForD3 };
+
+            fs.writeFile("./public/js/data.tsv","date"+" "+"joy"+" "+"sadness"+"\r\n",function(err) {
+
+                if (err) {
+                    return console.log(err);
+                };
+
+                for (var i = 0; i < hbsObject.Post.length; i++) {
+                    
+                    function convertDate(d){
+                    
+                    var parts = d.split(" ");
+                    var months = {
+                    Jan: "01",
+                    Feb: "02",
+                    Mar: "03",
+                    Apr: "04",
+                    May: "05",
+                    Jun: "06",
+                    Jul: "07",
+                    Aug: "08",
+                    Sep: "09",
+                    Oct: "10",
+                    Nov: "11",
+                    Dec: "12"
+                    };
+                    return parts[3]+months[parts[1]]+parts[2];
+                    }
+
+                    
+                        var d = hbsObject.Post[i].createdAt.toString();
+                        var t1 = convertDate(d);
+                        var t2 = parseFloat(hbsObject.Post[i].joy.toString())*100;
+                        var t3 = parseFloat(hbsObject.Post[i].sadness.toString())*100;
+                    fs.appendFile("./public/js/data.tsv", t1+" "+t2+" "+t3+"\r\n", function(err) {
+
+                        // If an error was experienced we say it.
+                        if (err) {
+                            console.log(err);
+                        }
+
+                        // If no error is experienced, we'll log the phrase "Content Added" to our node console.
+                        else {
+                            console.log("Content Added!");
+                        }
+
+                        });
+                }
+
+
+                    
+
+
+            });
+      res.render('userDash', hbsObject), { title: 'User Dashboard'};
     });
 
 });
