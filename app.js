@@ -69,7 +69,7 @@ const sessionStore = new MySQLStore({
     db: sequelize,
 });
 app.use(session({
-    secret: config.secret,
+    secret: 'secretWord',
     store: sessionStore,
     resave: false,
     saveUninitialized: false,
