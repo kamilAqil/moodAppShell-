@@ -4,7 +4,8 @@
   "private": true,
   "main": "app.js",
   "scripts": {
-    "start": "./bin/www"
+    "start": "./bin/www",
+    "test" : "mocha test"
   },
   "dependencies": {
     "babel-core": "^6.24.1",
