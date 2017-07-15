@@ -1,49 +1,46 @@
 {{> header}}
 <div class="container">
-        <div class="row">
-            <div class="col-sm-8">
-                <h3>How Are You Feeling?</h3>
-            </div>
+    <div class="row">
+        <div class="col-sm-8">
+            <h3>How Are You Feeling?</h3>
         </div>
-        <br>
-        <div class="row">
+    </div>
+    <br>
+    <div class="row">
 
-            <div class="col-sm-8"><button type="button" class="btn btn-default btn-lg btn-block" id="blogPost" onclick="location.href = '/entry';">Create a new entry</button></div>
+        <div class="col-sm-8"><button type="button" class="btn btn-default btn-lg btn-block" id="blogPost" onclick="location.href = '/entry';">Create a new entry</button></div>
 
+    </div>
+    <br>
+    <hr>
+    <div class="row">
+        <div class="col-sm-8">
+            <h3>Here's How You've Been Doing:</h3>
         </div>
-        <br>
-        <hr>
-        <div class="row">
-            <div class="col-sm-8">
-                <h3>Here's How You've Been Doing:</h3>
-            </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-sm-12">
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-sm-12">
             <div class="well well-lg">
-                {{#if Post}}
-                    {{#each Post}}
-                        <div class="alert alert-danger" role="alert">
-                            {{this.body}}
-                        </div>
-                        
-                    {{/each}}
 
-                {{/if}}
-            </div>
             </div>
         </div>
-        <br>
-        <div class="row">
-            <div class="col-sm-2"> <img class="placeholderImage" src="http://via.placeholder.com/75x75" /></div>
+    </div>
+    <br> {{#if Post}} {{#each Post}}
+    <div class="row">
+        <div class="col-sm-2"> <img class="placeholderImage" src="http://via.placeholder.com/75x75" /></div>
             <div class="col-sm-10" id="postHistory">
                 <div class="panel panel-default">
                     <div class="panel-body">
-                        Basic panel example
+                        {{this.body}}
                     </div>
                 </div>
             </div>
-        </div>
-        <br><br>
+    
     </div>
+    <br>
+ {{/each}} {{/if}}
+
+
+
+<br><br>

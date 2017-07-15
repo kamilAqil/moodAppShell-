@@ -43,6 +43,7 @@
     "sequelize": "^4.3.1",
     "serve-favicon": "~2.3.0",
     "style-loader": "^0.13.1",
+    "watson-developer-cloud": "^2.34.0",
     "webpack": "^2.2.0",
     "webpack-dotenv-plugin": "^2.0.0"
   }
