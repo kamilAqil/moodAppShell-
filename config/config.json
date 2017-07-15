@@ -6,7 +6,7 @@
     "host": "us-cdbr-iron-east-03.cleardb.net",
     "dialect": "mysql",
     "secret":"This is a random string"
-    
+
   },
   "test": {
     "username": "root",

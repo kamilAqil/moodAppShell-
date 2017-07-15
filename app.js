@@ -4,7 +4,8 @@ var path = require('path');
 var Sequelize = require('sequelize');
 var env = process.env.NODE_ENV || 'development';
 var config = require(path.join(__dirname, 'config', 'config.json'))[env];
-var sequelize = new Sequelize(config.database, config.username, config.password, config);
+// var sequelize = new Sequelize(config.database, config.username, config.password,config);
+var sequelize = new Sequelize('mysql://babbe505ecfb1b:84f122c8@us-cdbr-iron-east-03.cleardb.net/heroku_a9c3b7ff3b5f692?reconnect=true');
 var favicon = require('serve-favicon');
 // auth++++++
 var passport = require('passport');
@@ -128,8 +129,8 @@ passport.use(new LocalStrategy(
                 const hash = results.dataValues.password.toString();
                 bcrypt.compare(password, hash, function(err, response) {
                     if (response) {
-                        
-                        
+
+
                         return done(null, {
                             user_id: results.dataValues.id
                         });
@@ -140,7 +141,7 @@ passport.use(new LocalStrategy(
             };
 
         })
-       
+
 
     }
 ));
