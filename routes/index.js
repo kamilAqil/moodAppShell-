@@ -107,64 +107,64 @@ router.get('/userDash',authenticationMiddleware(), function (req, res, next) {
     }
     db.Post.findAll({
       where: query,
-      include: [db.users]
+      include: [db.users],
+      order: [['createdAt', 'DESC']]
+
     }).then(function(dbPost) {
            var hbsObject = {
                 Post: dbPost
             };
-
-            fs.writeFile("./public/data.tsv","date"+" "+"joy"+" "+"sadness"+"\r\n",function(err) {
+           
+            console.log(dbPost);
+            fs.writeFile("./public/data.tsv","date"+"\t"+"joy"+"\t"+"sadness"+"\r\n",function(err) {
 
                 if (err) {
                     return console.log(err);
-                };
+                }else{
+                    var len = hbsObject.Post.length-1;
 
-                for (var i = 0; i < hbsObject.Post.length; i++) {
-                    
-                    function convertDate(d){
-                    
-                    var parts = d.split(" ");
-                    var months = {
-                    Jan: "01",
-                    Feb: "02",
-                    Mar: "03",
-                    Apr: "04",
-                    May: "05",
-                    Jun: "06",
-                    Jul: "07",
-                    Aug: "08",
-                    Sep: "09",
-                    Oct: "10",
-                    Nov: "11",
-                    Dec: "12"
-                    };
-                    return parts[3]+months[parts[1]]+parts[2];
-                    }
-
-                    
-                        var d = hbsObject.Post[i].createdAt.toString();
-                        var t1 = convertDate(d);
-                        var t2 = parseFloat(hbsObject.Post[i].joy.toString())*100;
-                        var t3 = parseFloat(hbsObject.Post[i].sadness.toString())*100;
-                    fs.appendFile("./public/data.tsv", t1+" "+t2.toFixed(1)+" "+t3.toFixed(1)+"\r\n", function(err) {
-
-                        // If an error was experienced we say it.
-                        if (err) {
-                            console.log(err);
+                    for (var i = len; i > -1; i--) {
+                        
+                        function convertDate(d){
+                        
+                        var parts = d.split(" ");
+                        var months = {
+                        Jan: "01",
+                        Feb: "02",
+                        Mar: "03",
+                        Apr: "04",
+                        May: "05",
+                        Jun: "06",
+                        Jul: "07",
+                        Aug: "08",
+                        Sep: "09",
+                        Oct: "10",
+                        Nov: "11",
+                        Dec: "12"
+                        };
+                        return parts[3]+months[parts[1]]+parts[2];
                         }
 
-                        // If no error is experienced, we'll log the phrase "Content Added" to our node console.
-                        else {
-                            console.log("Content Added!");
-                        }
+                        
+                            var d = hbsObject.Post[i].createdAt.toString();
+                            var t1 = convertDate(d);
+                            var t2 = (parseFloat(hbsObject.Post[i].joy.toString())*100).toFixed(1);
+                            var t3 = (parseFloat(hbsObject.Post[i].sadness.toString())*100).toFixed(1);
+                        fs.appendFileSync("./public/data.tsv", t1+"\t"+t2+"\t"+t3+"\r\n",'utf8', function(err) {
+
+                            // // If an error was experienced we say it.
+                            // if (err) {
+                            //     console.log(err);
+                            // }
+
+                            // // If no error is experienced, we'll log the phrase "Content Added" to our node console.
+                            // else {
+                            //     console.log("Content Added!");
+                            // }
 
                         });
-                }
-
-
-                    
-
-
+                    };
+                };
             });
       res.render('userDash', hbsObject), { title: 'User Dashboard'};
     });
